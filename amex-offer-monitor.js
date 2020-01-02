@@ -104,7 +104,7 @@ const logger = new (winston.Logger)({
 });
 
 if(config.amex.historyfile) {
-    historyfile = path.resolve(__dirname, config.amex.historyfile);
+    historyfile = path.resolve(__dirname, 'json','raw',config.amex.historyfile);
 }
 
 var au = null;

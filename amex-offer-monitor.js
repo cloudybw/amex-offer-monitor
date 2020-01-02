@@ -263,7 +263,7 @@ const chooseCard = async (nightmare, cardId) => {
         console.log("Found " + elements.length + " cards and choosing number " + id + "\n");
         //logger.info("Found " + elements.length + " cards and choosing number " + id + "\n");
         elements[id].click();
-        return [elements.length, elements[id].childNodes[0].childNodes[0].childNodes[1].innerText];
+        return [elements.length, elements[id].childNodes[0].childNodes[0].childNodes[1].innerText.replace('View Additional Card Members', '')];
       }, cardId);
       console.dir(result);
       logger.debug(JSON.stringify(result, null, 2));

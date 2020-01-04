@@ -44,7 +44,7 @@ def main():
 		   'Card':[],
 		   'Merchant':[],
 		   'Bonus':[],
-		   'Deadline':[],
+		   'Expiration':[],
 		   'Status':[]}
 
 	with open('config.json') as configfile:
@@ -69,7 +69,7 @@ def main():
 			for offer in data[card]:
 				bonus = offer[0].split('\n')[0]
 				merchant = offer[0].split('\n')[1]
-				deadline = offer[1]
+				expiration = offer[1]
 				status = offer[2]
 
 				cardname = '\033[1m' + card + '\033[0m' if status == 'enrolled' else card
@@ -78,13 +78,13 @@ def main():
 				dic['Card'].append(cardname)
 				dic['Bonus'].append(bonus)
 				dic['Merchant'].append(merchant)
-				dic['Deadline'].append(deadline)
+				dic['Expiration'].append(expiration)
 				dic['Status'].append(status)
 
 	df = pd.DataFrame(dic)
 
-	by_name = df.groupby(['Cardmember','Bonus','Merchant','Deadline']).agg({'Card':['nunique',concat]}).rename(columns={'nunique':'Count','concat':'List'}).reset_index(level='Cardmember')
-	by_offer = df.groupby(['Bonus','Merchant','Deadline']).agg({'Cardmember':['nunique',concat]}).rename(columns={'nunique':'Count','concat':'List'})
+	by_name = df.groupby(['Cardmember','Merchant','Bonus','Expiration']).agg({'Card':['nunique',concat]}).rename(columns={'nunique':'Count','concat':'List'}).reset_index(level='Cardmember')
+	by_offer = df.groupby(['Merchant','Bonus','Expiration']).agg({'Cardmember':['nunique',concat]}).rename(columns={'nunique':'Count','concat':'List'})
 
 	agg = pd.merge(by_offer, by_name, how='inner', left_index=True, right_index=True)
 

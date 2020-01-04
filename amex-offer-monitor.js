@@ -26,7 +26,7 @@ var arg_password;
 var cardcount = 1; //this will be updated later
 var nocred_mode = false;
 var loglevel = 'info';
-var configfile = path.resolve(__dirname,'configs','config.yml');
+var configfile = path.resolve(__dirname,'config.yml');
 var logfile = path.resolve(__dirname, 'amex-offer-monitor.log');
 var historyfile = path.resolve(__dirname, 'amexoffers-data.json');
 var fakedatafile = path.resolve(__dirname, 'amexoffers-fakedata.json');

@@ -1,6 +1,5 @@
 #!/bin/bash
 pattern=${1:-*}
-echo $pattern
 
 for fname in `ls configs`
 do

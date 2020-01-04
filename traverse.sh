@@ -1,8 +1,10 @@
 #!/bin/bash
+pattern=${1:-*}
+echo $pattern
 
 for fname in `ls configs`
 do
-  if [[ $fname == * ]]
+  if [[ $fname == $pattern ]]
   then
     base="node amex-offer-monitor.js "
     configoption="--config configs/"

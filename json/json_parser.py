@@ -47,7 +47,8 @@ def main():
 		   'Expiration':[],
 		   'Status':[]}
 
-	with open('config.json') as configfile:
+	config_path = os.path.join('/Users','bzheng','github','amex-offer-monitor','json','config.json')
+	with open(config_path) as configfile:
 		cardmember_dict = json.load(configfile)['cardmembers']
 
 	ending_dict, logins = input(cardmember_dict)

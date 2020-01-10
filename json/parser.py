@@ -90,7 +90,8 @@ def main():
 	agg = pd.merge(by_offer, by_name, how='inner', left_index=True, right_index=True)
 
 	today = date.today().strftime('%Y-%m-%d')
-	output_path = os.path.join('/Users','bzheng','github','amex-offer-monitor','json','parsed',today+'_summary.csv')
+#	output_path = os.path.join('/Users','bzheng','github','amex-offer-monitor','json','parsed',today+'_summary.csv')
+	output_path = os.path.join('/Users','bzheng','google-drive','study','github','amex-offer-monitor','json','parsed',today+'_summary.csv')
 
 	agg.to_csv(output_path)
 

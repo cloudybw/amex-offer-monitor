@@ -70,3 +70,4 @@ config.*yml
 
 amexoffers-*.json
 amex-offer-monitor.bat
+*.yml

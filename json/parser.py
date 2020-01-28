@@ -47,14 +47,14 @@ def main():
 		   'Expiration':[],
 		   'Status':[]}
 
-	config_path = os.path.join('/Users','bzheng','github','amex-offer-monitor','json','config.json')
+	config_path = os.path.join('/home','cloudybw','study','github','amex-offer-monitor','json','config.json')
 	with open(config_path) as configfile:
 		cardmember_dict = json.load(configfile)['cardmembers']
 
 	ending_dict, logins = input(cardmember_dict)
 
 	for login in logins:
-		path = os.path.join('/Users','bzheng','github','amex-offer-monitor','json','raw', 'amexoffers-data_' + login + '.json')
+		path = os.path.join('/home','cloudybw','study','github','amex-offer-monitor','json','raw', 'amexoffers-data_' + login + '.json')
 
 		try:
 			with open(path) as json_file:

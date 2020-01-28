@@ -26,7 +26,7 @@ var arg_password;
 var cardcount = 1; //this will be updated later
 var nocred_mode = false;
 var loglevel = 'info';
-var configfile = path.resolve(__dirname,'configs','config.yml');
+var configfile = path.resolve(__dirname,'config.yml');
 var logfile = path.resolve(__dirname, 'amex-offer-monitor.log');
 var historyfile = path.resolve(__dirname, 'amexoffers-data.json');
 var fakedatafile = path.resolve(__dirname, 'amexoffers-fakedata.json');
@@ -801,6 +801,9 @@ const asyncMain = async nightmare => {
     notify_message += "</body></html>";
 
     try {
+       if(!debug_fake_data) {
+         fs.writeFileSync(historyfile, JSON.stringify(newdata, null, 2));
+       }
        if(!debug_nomail) { 
            if(send_message) {
                await send_email(notify_message);
@@ -808,9 +811,6 @@ const asyncMain = async nightmare => {
               console.log("Script ran successfully but didn't find any reason to send an email, so nothing sent");
               logger.info("Script ran successfully but didn't find any reason to send an email, so nothing sent");
            }
-       }
-       if(!debug_fake_data) {
-         fs.writeFileSync(historyfile, JSON.stringify(newdata, null, 2));
        }
     } catch(e) { 
         console.error(e);

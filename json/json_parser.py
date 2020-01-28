@@ -53,7 +53,7 @@ def main():
 	ending_dict, logins = input(cardmember_dict)
 
 	for login in logins:
-		path = os.path.join('raw', 'amexoffers-data_' + login + '.json')
+		path = os.path.join('raw', login + '.json')
 
 		try:
 			with open(path) as json_file:
